@@ -51,16 +51,44 @@ public class KolkoKrzyzykTest {
 				{'X', 'O', 'X'},
 				{'O', ' ', ' '}};
 		int cos=kolkoKrzyzyk.checkResult(table);
-		assertThat(2,is(cos));
+		assertThat(1,is(cos));
 	}
 	@Test
-	public void ifItsCorrectMovePlayerOne() throws Exception {
+	public void ifItsBadtMovePlayerOne() throws Exception {
 		KolkoKrzyzyk kolkoKrzyzyk = new KolkoKrzyzyk();
 		char table[][] = {{'X', 'O', 'O'},
 				{'X', 'O', 'X'},
 				{' ', ' ', ' '}};
 		boolean badmove = kolkoKrzyzyk.user_oneMove(table,"a1");
-		assertThat(true,is(not(equalTo(badmove))));
+		assertThat(true, is(not(equalTo(badmove))));
+	}
+	@Test
+	public void ifItsCorrectMovePlayerOne() throws Exception {
+		KolkoKrzyzyk kolkoKrzyzyk = new KolkoKrzyzyk();
+		char table[][] = {{'X', 'O', 'O'},
+				{'X', ' ', ' '},
+				{' ', ' ', 'X'}};
+		boolean goodmove = kolkoKrzyzyk.user_oneMove(table,"b2");
+		assertThat(true,is(equalTo(goodmove)));
+	}
+
+	@Test
+	public void ifItsBadtMovePlayerTwo() throws Exception {
+		KolkoKrzyzyk kolkoKrzyzyk = new KolkoKrzyzyk();
+		char table[][] = {{'X', 'O', 'O'},
+				{'X', 'O', 'X'},
+				{' ', ' ', ' '}};
+		boolean badmove = kolkoKrzyzyk.user_twoMove(table,"a1");
+		assertThat(true, is(not(equalTo(badmove))));
+	}
+	@Test
+	public void ifItsCorrectMovePlayerTwo() throws Exception {
+		KolkoKrzyzyk kolkoKrzyzyk = new KolkoKrzyzyk();
+		char table[][] = {{'X', 'O', 'O'},
+				{'X', ' ', ' '},
+				{' ', ' ', 'X'}};
+		boolean goodmove = kolkoKrzyzyk.user_twoMove(table,"b2");
+		assertThat(true,is(equalTo(goodmove)));
 	}
 
 	@After
